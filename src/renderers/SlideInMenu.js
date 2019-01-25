@@ -48,15 +48,15 @@ export default class SlideInMenu extends React.Component {
     const { height: oHeight } = layouts.optionsLayout;
     const animation = {
       transform: [{
-        translateY: this.state.slide.interpolate({
+        translateX: this.state.slide.interpolate({
           inputRange: [0, 1],
-          outputRange: [oHeight, 0],
+          outputRange: [width - 100, 100]
         }),
       }],
     };
     const position = computePosition(layouts);
     return (
-      <Animated.View style={[styles.options, style, animation, position]} {...other}>
+      <Animated.View style={[styles.options, { width: width - 100 }, style, animation, position]} {...other}>
         {children}
       </Animated.View>
     );
