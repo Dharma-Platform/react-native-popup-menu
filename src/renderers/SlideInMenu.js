@@ -10,7 +10,7 @@ export const computePosition = (layouts) => {
   const left = 0, right = 0;
   const position = { top, left, right };
   // TODO what is the best way to handle safeArea?
-  // most likely some extra paddings inside SlideInMenu 
+  // most likely some extra paddings inside SlideInMenu
   return position;
 }
 
@@ -45,12 +45,13 @@ export default class SlideInMenu extends React.Component {
 
   render() {
     const { style, children, layouts, ...other } = this.props;
-    const { height: oHeight } = layouts.optionsLayout;
+    const { width } = layouts.windowLayout;
+
     const animation = {
       transform: [{
         translateX: this.state.slide.interpolate({
           inputRange: [0, 1],
-          outputRange: [width - 100, 100]
+          outputRange: [width - 100, 100],
         }),
       }],
     };
